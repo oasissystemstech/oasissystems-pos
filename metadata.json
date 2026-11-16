@@ -1,0 +1,6 @@
+{
+  "name": "Akwaboah Multi-Industry POS & Business Platform",
+  "description": "Professional offline-capable POS and business management platform designed for African small and medium businesses across multiple industries (Ghana, Liberia, and beyond).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

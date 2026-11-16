@@ -1,0 +1,1373 @@
+# PRODUCT REQUIREMENTS DOCUMENT (PRD)
+## Multi-Industry Point of Sale & Business Management Platform
+
+**Document Version:** 1.0  
+**Date:** 16 November 2026  
+**Project Status:** Approved for Product Design and Technical Development  
+**Initial Market:** Ghana  
+**Expansion Markets:** Liberia and other African markets  
+**Deployment Strategy:** Hybrid — Managed Cloud and Dedicated Installations  
+**Business Model:** One-Time Software Licence and Installation Fee  
+**Product Name:** To Be Determined
+
+---
+
+# 1. EXECUTIVE SUMMARY
+
+## 1.1 Product Overview
+
+The project involves developing a modern, easy-to-use, offline-capable Point of Sale (POS) and Business Management Platform designed for small and medium-sized businesses.
+
+The platform will provide a unified business management solution for multiple industries, including:
+
+- Bars and pubs.
+- Restaurants and food vendors.
+- Cosmetics and beauty shops.
+- Provision and grocery stores.
+- Pharmacies.
+- Supermarkets and mini-marts.
+- Fashion and clothing retailers.
+- Electronics and accessories retailers.
+- General retail businesses.
+
+The application will use a shared platform architecture with configurable industry-specific modules.
+
+Businesses will be able to purchase the software through a one-time licensing arrangement, with optional installation, hosting, maintenance, support and customisation services.
+
+## 1.2 Product Vision
+
+To make professional business management accessible to small businesses through affordable, intuitive and reliable technology.
+
+## 1.3 Product Mission
+
+To simplify business operations by bringing sales, inventory, purchasing, staff management, financial accountability and business reporting into one application.
+
+## 1.4 Core Product Principles
+
+1. Simplicity: The system must be easy to learn and operate.
+2. Reliability: Sales must continue during internet interruptions.
+3. Accountability: Every important business transaction must be traceable.
+4. Security: Business data must remain private and protected.
+5. Flexibility: Different industries must be supported without separate applications.
+6. Scalability: The architecture must support multiple businesses, branches and terminals.
+7. Localisation: The platform must accommodate different African currencies, tax rules and business practices.
+8. Maintainability: All installations must be manageable through a controlled release and maintenance process.
+
+---
+
+# 2. BUSINESS OBJECTIVES
+
+The platform must address common operational problems faced by small businesses.
+
+| Business challenge | Proposed solution |
+|---|---|
+| Poor sales accountability | Digital POS and transaction records |
+| Stock losses | Inventory movement tracking |
+| Unreliable financial records | Automated sales and expense reports |
+| Cash discrepancies | Cashier shift reconciliation |
+| Employee accountability | User permissions and audit trails |
+| Poor purchasing control | Supplier and purchase management |
+| Limited business visibility | Owner dashboard |
+| Internet interruptions | Offline-first functionality |
+| Complicated software | Industry-specific simplified interfaces |
+
+## 2.1 Commercial Objectives
+
+The platform should:
+
+- Generate revenue through software sales and installation.
+- Support managed cloud deployments.
+- Support dedicated customer installations.
+- Allow optional paid maintenance and support.
+- Support additional branch and terminal licensing.
+- Allow paid customisations and specialised integrations.
+- Build a reusable product that can be sold to multiple businesses.
+
+---
+
+# 3. TARGET USERS
+
+## 3.1 Primary Users
+
+**Business Owners**
+
+Require access to sales, profitability, inventory, expenses, employees and operational reports.
+
+**Managers**
+
+Oversee business activities, staff, inventory, purchases and daily operations.
+
+**Cashiers**
+
+Process sales, receive payments, issue receipts and manage assigned cash sessions.
+
+**Inventory Officers**
+
+Manage products, stock receiving, adjustments and stocktaking.
+
+**Accountants**
+
+Review financial transactions, expenses, payment reconciliation and reports.
+
+**Platform Administrators**
+
+Manage customer installations, licences, deployments, updates and platform operations.
+
+## 3.2 User Roles and Permissions
+
+The application must support configurable role-based access control.
+
+Default roles:
+
+| Role | Permissions |
+|---|---|
+| Platform Super Admin | Platform-wide administration |
+| Platform Support | Authorised technical support |
+| Business Owner | Full business access |
+| Business Administrator | Business configuration and user management |
+| Manager | Operational management |
+| Supervisor | Supervision and approvals |
+| Cashier | POS operations |
+| Inventory Officer | Inventory and purchasing |
+| Accountant | Financial reporting |
+| Pharmacist | Pharmacy-specific authorised operations |
+
+Permissions must be configurable by business administrators, subject to platform-level security restrictions.
+
+---
+
+# 4. SYSTEM ARCHITECTURE
+
+## 4.1 Architectural Approach
+
+The application shall use a modular monolithic architecture.
+
+The system will consist of one primary application with logically separated modules, services and database responsibilities.
+
+Microservices are not required for the initial release.
+
+## 4.2 High-Level Architecture
+
+The architecture consists of six layers:
+
+### Layer 1: Presentation Layer
+
+- Business management dashboard.
+- POS interface.
+- Platform administration portal.
+- Industry-specific workspaces.
+- Responsive mobile interface.
+- Installable PWA.
+
+### Layer 2: Application Layer
+
+- Authentication.
+- Business management.
+- Sales processing.
+- Inventory management.
+- Purchasing.
+- Financial management.
+- Employee management.
+- Reporting.
+- Industry-specific business logic.
+
+### Layer 3: Business Logic and Services
+
+- Transaction processing.
+- Stock calculation.
+- Payment allocation.
+- Discount authorisation.
+- Refund processing.
+- Financial calculations.
+- Offline synchronisation.
+- Licensing verification.
+- Audit logging.
+
+### Layer 4: Data Layer
+
+- PostgreSQL database.
+- Supabase authentication.
+- Supabase Storage.
+- IndexedDB local storage.
+- Database functions and triggers.
+
+### Layer 5: Infrastructure Layer
+
+- Vercel hosting.
+- Supabase cloud services.
+- GitHub source control.
+- Automated deployment.
+- Backup and recovery infrastructure.
+
+### Layer 6: Integration Layer
+
+- Receipt printers.
+- Barcode scanners.
+- Cash drawers.
+- Payment service providers.
+- Email and notification services.
+- Future accounting integrations.
+
+## 4.3 Technology Stack
+
+| Component | Technology |
+|---|---|
+| Frontend | React |
+| Programming language | TypeScript |
+| Build system | Vite |
+| Styling | Tailwind CSS |
+| Database | PostgreSQL |
+| Backend services | Supabase |
+| Authentication | Supabase Auth |
+| Storage | Supabase Storage |
+| Offline database | IndexedDB |
+| Local database wrapper | Dexie.js |
+| Data validation | Zod |
+| Server state | TanStack Query |
+| Charts | Recharts |
+| Routing | React Router |
+| Hosting | Vercel |
+| Source control | GitHub |
+
+Technology choices must be reviewed against actual browser, device and deployment requirements during implementation.
+
+---
+
+# 5. HYBRID DEPLOYMENT ARCHITECTURE
+
+## 5.1 Deployment Model A: Managed Cloud
+
+This will be the default deployment model.
+
+All participating businesses will access the centrally hosted application through a common application address.
+
+Each business must have:
+
+- A unique business account.
+- Its own business configuration.
+- Isolated data.
+- Assigned users.
+- Assigned branches.
+- Independent business settings.
+- Its own transaction history.
+- Configurable industry modules.
+
+The central platform will manage the underlying infrastructure.
+
+### Example structure
+
+Central Platform
+
+- Business A — Provision Store
+- Business B — Restaurant
+- Business C — Cosmetics Shop
+- Business D — Bar
+- Business E — Pharmacy
+
+Each business must remain isolated from the others.
+
+No business user may access another business's information without an explicitly authorised platform-level process.
+
+## 5.2 Deployment Model B: Dedicated Installation
+
+Dedicated installations will be available for customers who require a separate environment.
+
+Each dedicated installation will have:
+
+- Its own application deployment.
+- Its own Supabase project or dedicated PostgreSQL environment.
+- Its own authentication environment.
+- Its own storage environment.
+- Its own configuration.
+- Its own backups.
+- Its own licence information.
+
+The same source codebase must support both deployment models.
+
+Dedicated deployments must receive application updates through the platform's controlled release process.
+
+## 5.3 Deployment Management
+
+A platform administrator must be able to maintain a deployment registry.
+
+Each deployment record should include:
+
+- Deployment identifier.
+- Customer/business name.
+- Deployment type.
+- Application version.
+- Database environment identifier.
+- Licence status.
+- Installation date.
+- Renewal or support dates where applicable.
+- Number of licensed branches.
+- Number of licensed terminals.
+- Maintenance status.
+
+Never store database service-role keys or privileged credentials in publicly accessible frontend code.
+
+## 5.4 Configuration Management
+
+Environment-specific settings must be managed separately.
+
+The application must support:
+
+- Development.
+- Testing/staging.
+- Production.
+- Dedicated customer environments.
+
+Secrets must be stored using appropriate environment secret management.
+
+---
+
+# 6. MULTI-TENANT DATA ARCHITECTURE
+
+## 6.1 Business Isolation
+
+The managed cloud platform must use a multi-tenant database model.
+
+Every business-owned record must be associated with a business identifier.
+
+Where applicable, records must also be associated with a branch identifier.
+
+## 6.2 Core Database Structure
+
+### Business and Administration
+
+- businesses
+- business_settings
+- business_modules
+- branches
+- business_licenses
+- deployments
+
+### User Management
+
+- profiles
+- business_members
+- roles
+- permissions
+- role_permissions
+- user_sessions
+
+### Products
+
+- products
+- product_categories
+- product_variants
+- product_units
+- product_barcodes
+- product_prices
+
+### Inventory
+
+- stock_balances
+- stock_movements
+- stock_adjustments
+- stock_transfers
+- stock_counts
+- stock_count_items
+
+### Sales
+
+- sales
+- sale_items
+- sale_payments
+- sale_discounts
+- refunds
+- refund_items
+
+### Purchasing
+
+- suppliers
+- purchase_orders
+- purchase_order_items
+- goods_receipts
+- goods_receipt_items
+- supplier_payments
+- purchase_returns
+
+### Finance
+
+- expenses
+- expense_categories
+- cash_sessions
+- cash_movements
+- payment_methods
+- exchange_rates
+
+### Customers
+
+- customers
+- customer_accounts
+- customer_transactions
+- customer_payments
+
+### Employees
+
+- employees
+- employee_attendance
+- employee_shifts
+- employee_permissions
+
+### Restaurant
+
+- restaurant_tables
+- restaurant_orders
+- restaurant_order_items
+- menu_items
+- recipes
+- recipe_ingredients
+- kitchen_tickets
+
+### Pharmacy
+
+- medicine_batches
+- prescriptions
+- dispensing_records
+- medicine_categories
+
+### System and Audit
+
+- audit_logs
+- sync_events
+- system_notifications
+- backup_records
+- system_settings
+
+The schema may be refined during technical design, but the separation of responsibilities must be preserved.
+
+## 6.3 Database Requirements
+
+- Use UUID identifiers for primary entities.
+- Enforce foreign-key relationships.
+- Use appropriate decimal or integer minor-unit representations for monetary values.
+- Include transaction timestamps.
+- Record the responsible user for sensitive operations.
+- Maintain transaction history.
+- Apply Row Level Security.
+- Enforce tenant and branch access restrictions.
+- Use database transactions for financial and inventory operations.
+- Prevent duplicate transaction processing.
+- Avoid unrestricted direct updates to completed financial records.
+
+---
+
+# 7. BUSINESS ONBOARDING MODULE
+
+## 7.1 Business Registration
+
+The platform must provide a guided onboarding process.
+
+Required information:
+
+- Business name.
+- Business logo.
+- Business category.
+- Country.
+- Currency.
+- Business contact.
+- Business address.
+- Tax configuration.
+- Initial branch.
+- Administrator account.
+- Receipt preferences.
+
+## 7.2 Industry Configuration
+
+During onboarding, the business selects its industry.
+
+Available initial profiles:
+
+1. Restaurant.
+2. Bar.
+3. Cosmetics.
+4. Provision Store.
+5. Pharmacy.
+6. Supermarket.
+7. Fashion.
+8. Electronics.
+9. General Retail.
+
+The selected industry determines:
+
+- Available modules.
+- POS layout.
+- Product attributes.
+- Inventory measurement options.
+- Relevant workflows.
+- Dashboard information.
+- Reporting categories.
+
+A business may enable additional supported modules through authorised configuration.
+
+## 7.3 Country Configuration
+
+Initial country configurations:
+
+**Ghana**
+- Country code: GH.
+- Currency: GHS.
+- Time zone: Africa/Accra.
+- Language: English.
+
+**Liberia**
+- Country code: LR.
+- Currency options: USD and LRD.
+- Time zone: Africa/Monrovia.
+- Language: English.
+
+The system must support configurable country-specific tax rules, receipt requirements and date/number formatting.
+
+Country-specific tax configurations must be maintained independently and validated before commercial release.
+
+---
+
+# 8. POINT OF SALE MODULE
+
+## 8.1 POS Interface
+
+The POS interface must prioritise speed, simplicity and visibility.
+
+The main interface should contain:
+
+- Product search.
+- Barcode input.
+- Product category navigation.
+- Product display grid.
+- Shopping cart.
+- Quantity controls.
+- Item removal.
+- Discount controls.
+- Customer selection.
+- Payment action.
+- Transaction total.
+
+## 8.2 Sales Processing
+
+A standard sales workflow:
+
+1. Cashier logs in.
+2. Cashier opens an authorised cash session.
+3. Cashier selects or scans products.
+4. Products are added to the cart.
+5. Quantities and discounts are adjusted.
+6. The system calculates the total.
+7. Cashier selects payment method.
+8. Payment is recorded or confirmed.
+9. The sale is completed.
+10. Stock movements are recorded.
+11. Receipt is generated.
+12. Transaction is added to sales history.
+
+## 8.3 Payment Methods
+
+Support:
+
+- Cash.
+- Mobile Money.
+- Bank transfer.
+- Debit/credit card.
+- Other configured payment methods.
+
+The system must support split payments.
+
+Example:
+
+Total sale: GH₵250.
+
+- Cash: GH₵100.
+- Mobile Money: GH₵150.
+
+The transaction must be considered fully paid only when all payment allocations are confirmed.
+
+Electronic payment confirmation must not be assumed merely because a cashier selects an electronic payment method.
+
+## 8.4 Transaction Management
+
+Support:
+
+- Completed transactions.
+- Held transactions.
+- Resumed transactions.
+- Refunds.
+- Returns.
+- Voided transactions.
+- Discounts.
+- Customer credit transactions where authorised.
+
+Completed sales must be immutable. Corrections must be recorded through controlled reversal, refund or adjustment records.
+
+## 8.5 Receipt Generation
+
+Receipts must contain:
+
+- Business name.
+- Business logo where available.
+- Address and contact details.
+- Transaction reference.
+- Date and time.
+- Cashier.
+- Product descriptions.
+- Quantities.
+- Unit prices.
+- Discounts.
+- Tax details where applicable.
+- Payment breakdown.
+- Total paid.
+- Change due where applicable.
+
+Support 58mm and 80mm thermal receipt formats.
+
+Provide options to print, download and share digital receipts.
+
+---
+
+# 9. PRODUCT AND INVENTORY MANAGEMENT
+
+## 9.1 Product Management
+
+The system must support:
+
+- Product registration.
+- Product images.
+- SKU.
+- Barcode.
+- Product description.
+- Category.
+- Purchase price.
+- Selling price.
+- Wholesale price.
+- Product variants.
+- Units of measurement.
+- Tax classification.
+- Reorder level.
+- Active/inactive status.
+
+## 9.2 Unit Management
+
+Products must support multiple measurement units.
+
+Examples:
+
+- Piece.
+- Pack.
+- Carton.
+- Box.
+- Bottle.
+- Crate.
+- Kilogram.
+- Gram.
+- Litre.
+- Millilitre.
+
+Unit conversions must be configurable and validated.
+
+## 9.3 Stock Management
+
+Support:
+
+- Stock receiving.
+- Stock deductions.
+- Stock transfers.
+- Stock adjustments.
+- Stocktaking.
+- Damaged stock.
+- Expired stock.
+- Returns to suppliers.
+- Stock movement reports.
+
+## 9.4 Stock Valuation
+
+The system should initially support weighted average cost valuation, with FIFO available as a configurable future enhancement.
+
+Stock valuation and cost-of-goods-sold calculations must use a consistent accounting policy.
+
+## 9.5 Bulk Product Import
+
+Support:
+
+- CSV import.
+- Excel-compatible import templates.
+- Product image URLs where supported.
+- Duplicate SKU detection.
+- Validation reports.
+- Import previews.
+- Error reporting.
+
+The import process must not silently create invalid or duplicate products.
+
+---
+
+# 10. PURCHASING AND SUPPLIER MANAGEMENT
+
+Required functionality:
+
+- Supplier registration.
+- Supplier contact information.
+- Purchase orders.
+- Purchase order approval.
+- Goods received notes.
+- Supplier invoices.
+- Purchase returns.
+- Supplier payments.
+- Supplier balances.
+- Purchase history.
+- Outstanding supplier obligations.
+
+Stock must only increase when goods are properly received and recorded.
+
+---
+
+# 11. FINANCIAL MANAGEMENT
+
+## 11.1 Financial Dashboard
+
+Display:
+
+- Total sales.
+- Total cash received.
+- Electronic payments.
+- Cost of goods sold.
+- Gross profit.
+- Operating expenses.
+- Net operating profit.
+- Outstanding customer balances.
+- Outstanding supplier balances.
+
+Financial reports must distinguish cash movements from revenue recognition.
+
+## 11.2 Expense Management
+
+Support:
+
+- Expense registration.
+- Expense categories.
+- Expense descriptions.
+- Amount.
+- Currency.
+- Payment method.
+- Date.
+- Responsible employee.
+- Supporting document attachment.
+- Approval workflow.
+
+## 11.3 Cash Management
+
+Support:
+
+- Opening cash balance.
+- Cash additions.
+- Cash withdrawals.
+- Cash sales.
+- Cash refunds.
+- Expected closing balance.
+- Actual closing balance.
+- Cash variance.
+- Cashier reconciliation.
+
+## 11.4 Financial Reporting
+
+Provide:
+
+- Daily sales report.
+- Weekly sales report.
+- Monthly sales report.
+- Sales by product.
+- Sales by category.
+- Sales by cashier.
+- Gross profit report.
+- Expense report.
+- Stock valuation report.
+- Cash reconciliation report.
+- Payment method report.
+
+Financial calculations must be tested against independently calculated reference examples.
+
+---
+
+# 12. EMPLOYEE MANAGEMENT
+
+Support:
+
+- Employee profiles.
+- User account assignment.
+- Roles and permissions.
+- Attendance records.
+- Shift scheduling.
+- Shift opening and closing.
+- Cashier performance.
+- Login history.
+- Activity history.
+- Transaction authorisation.
+
+Employee payroll and commission processing may be added as a later module.
+
+---
+
+# 13. INDUSTRY-SPECIFIC MODULES
+
+## 13.1 Restaurant
+
+Required features:
+
+- Table management.
+- Dine-in orders.
+- Takeaway orders.
+- Delivery orders.
+- Menu management.
+- Food modifiers.
+- Kitchen order tickets.
+- Order status tracking.
+- Recipe management.
+- Ingredient stock deduction.
+- Bill splitting.
+- Table transfers.
+
+The restaurant POS must support order preparation workflows independently of final payment.
+
+## 13.2 Bar
+
+Required features:
+
+- Drink catalogue.
+- Bottle and crate tracking.
+- Drink size management.
+- Open customer tabs.
+- Running bills.
+- Happy-hour pricing.
+- Discounts.
+- Bar stock consumption.
+- Cashier reconciliation.
+
+## 13.3 Cosmetics
+
+Required features:
+
+- Brand management.
+- Product variants.
+- Shades and colours.
+- Sizes.
+- Barcode scanning.
+- Product expiry dates where relevant.
+- Promotions.
+- Customer purchase history.
+
+## 13.4 Provision Store
+
+Required features:
+
+- Fast product checkout.
+- Barcode scanning.
+- Wholesale pricing.
+- Retail pricing.
+- Multiple units.
+- Bulk stock receiving.
+- Reorder alerts.
+- Stock valuation.
+
+## 13.5 Pharmacy
+
+Required features:
+
+- Medicine catalogue.
+- Medicine categories.
+- Batch numbers.
+- Expiry dates.
+- Prescription records.
+- Dispensing records.
+- Stock alerts.
+- Supplier management.
+- Authorised dispensing permissions.
+
+Pharmacy operations must be subject to applicable national regulations, professional authorisation and controlled-medicine requirements.
+
+## 13.6 Other Retail Businesses
+
+Support:
+
+- Product variants.
+- Multiple prices.
+- Barcode management.
+- Serial numbers where relevant.
+- Warranty information.
+- Returns and exchanges.
+
+---
+
+# 14. OFFLINE-FIRST FUNCTIONALITY
+
+Offline functionality is a core product requirement.
+
+## 14.1 Offline Architecture
+
+Use:
+
+- Service Workers.
+- PWA caching.
+- IndexedDB.
+- Dexie.js.
+- Synchronisation queue.
+- Unique transaction identifiers.
+
+## 14.2 Offline Operations
+
+The system must support:
+
+- Opening the installed application.
+- Accessing cached product information.
+- Creating sales.
+- Recording cash payments.
+- Generating transaction references.
+- Storing transactions locally.
+- Maintaining a synchronisation queue.
+
+The exact offline permissions for electronic payment methods, refunds and sensitive operations must be configurable.
+
+## 14.3 Synchronisation
+
+When internet access returns:
+
+1. Detect connectivity.
+2. Retrieve queued transactions.
+3. Validate transaction identifiers.
+4. Synchronise transactions.
+5. Confirm successful processing.
+6. Update local synchronisation status.
+7. Retry failed transactions safely.
+
+## 14.4 Conflict Management
+
+The system must:
+
+- Detect duplicate submissions.
+- Prevent duplicate financial records.
+- Detect conflicting stock changes.
+- Maintain transaction order where required.
+- Flag unresolved discrepancies.
+- Provide an administrative reconciliation process.
+
+Offline data must never be silently discarded.
+
+---
+
+# 15. REPORTING AND ANALYTICS
+
+The platform must provide separate operational and financial dashboards.
+
+## Business Owner Dashboard
+
+- Today's sales.
+- Sales comparison.
+- Gross profit.
+- Expenses.
+- Net operating profit.
+- Number of transactions.
+- Top-selling products.
+- Low-stock products.
+- Payment breakdown.
+- Employee performance.
+
+## Inventory Dashboard
+
+- Total products.
+- Current stock.
+- Low-stock products.
+- Out-of-stock products.
+- Stock value.
+- Stock movement.
+- Expiring products where relevant.
+
+## Sales Dashboard
+
+- Sales trends.
+- Product performance.
+- Category performance.
+- Cashier performance.
+- Payment breakdown.
+- Refunds and returns.
+
+All reports must support appropriate date filters and business/branch filtering.
+
+---
+
+# 16. SECURITY AND DATA PROTECTION
+
+Security must be integrated into the application from the beginning.
+
+Requirements:
+
+1. Supabase Row Level Security.
+2. Role-based access control.
+3. Business-level data isolation.
+4. Branch-level data restrictions.
+5. Secure authentication.
+6. Secure session management.
+7. Password recovery.
+8. Audit logs.
+9. Privileged action authorisation.
+10. Secure server-side operations.
+11. Protected application secrets.
+12. Data export.
+13. Backup and recovery.
+14. Device access controls.
+
+Sensitive operations such as refunds, large discounts, stock adjustments and transaction reversals must require appropriate permissions.
+
+Platform support personnel must not automatically have unrestricted access to customer financial information.
+
+Where support access is necessary, use a controlled, logged and authorised access mechanism.
+
+The Ghana deployment must be reviewed against applicable data protection and tax requirements. Liberia and subsequent markets must receive their own compliance reviews.
+
+---
+
+# 17. LICENSING AND COMMERCIAL MANAGEMENT
+
+## 17.1 Licensing Model
+
+The initial commercial model will be a one-time software purchase and installation fee.
+
+A perpetual licence should specify the version, permitted deployment, business usage, branches and terminals.
+
+## 17.2 Licensing Features
+
+The system should support:
+
+- Licence registration.
+- Licence activation.
+- Licence key verification.
+- Customer assignment.
+- Deployment assignment.
+- Branch limits.
+- Terminal limits.
+- Licensed modules.
+- Licence status.
+- Upgrade eligibility.
+- Support entitlement.
+
+## 17.3 Licensing Safeguards
+
+Licence verification must be designed so temporary internet outages do not immediately disable a functioning business.
+
+Dedicated installations should support a securely signed licence file or equivalent offline verification mechanism, with defined verification and renewal policies.
+
+## 17.4 Commercial Services
+
+Optional services:
+
+- Managed hosting.
+- Installation.
+- Data migration.
+- Product catalogue setup.
+- Employee training.
+- Technical support.
+- Maintenance.
+- Major software upgrades.
+- Additional branches.
+- Custom development.
+
+---
+
+# 18. HARDWARE AND EXTERNAL INTEGRATIONS
+
+The platform should support commonly available POS equipment.
+
+### Hardware
+
+- USB barcode scanners.
+- Bluetooth barcode scanners.
+- 58mm thermal receipt printers.
+- 80mm thermal receipt printers.
+- Cash drawers.
+- Android POS terminals.
+- Desktop computers.
+- Tablets.
+
+### Integrations
+
+Potential future integrations:
+
+- Mobile Money payment providers.
+- Bank payment services.
+- Email services.
+- WhatsApp business communication.
+- Accounting systems.
+- Digital tax receipt services.
+
+Hardware compatibility must be verified through actual device testing.
+
+A local print bridge or supported device integration may be required for printer and cash drawer control.
+
+---
+
+# 19. USER INTERFACE AND EXPERIENCE REQUIREMENTS
+
+The application must use a modern, clean and intuitive design.
+
+## Design Principles
+
+- Simple navigation.
+- Large touch-friendly controls.
+- Clear typography.
+- Consistent spacing.
+- Responsive layouts.
+- Minimal unnecessary screens.
+- Clear confirmation messages.
+- Readable dashboards.
+- Accessible colour contrast.
+- Consistent form behaviour.
+
+## Application Navigation
+
+### Platform Administrator
+
+- Overview.
+- Businesses.
+- Deployments.
+- Licences.
+- Users.
+- System monitoring.
+- Updates.
+- Support.
+- Settings.
+
+### Business Management Portal
+
+- Dashboard.
+- POS.
+- Sales.
+- Products.
+- Inventory.
+- Purchases.
+- Suppliers.
+- Customers.
+- Expenses.
+- Employees.
+- Reports.
+- Settings.
+
+Industry-specific modules should appear only when enabled.
+
+### POS Interface
+
+The cashier interface must be optimised for rapid checkout and must not require navigation through the full management dashboard.
+
+---
+
+# 20. NON-FUNCTIONAL REQUIREMENTS
+
+## Performance
+
+- The POS interface should become usable promptly after application startup.
+- Common product searches should respond quickly.
+- Sales calculations must be immediate.
+- Reports should use efficient database queries.
+- Large product catalogues must support pagination or efficient search.
+
+## Availability
+
+- Managed cloud services should target 99.5% monthly application availability initially, excluding scheduled maintenance and agreed third-party outages.
+- Offline sales functionality should remain available during internet interruptions within the supported device's operational limits.
+
+## Scalability
+
+The architecture must support:
+
+- Multiple businesses.
+- Multiple branches.
+- Multiple terminals.
+- Growing product catalogues.
+- Large transaction histories.
+- Additional industry modules.
+- Dedicated deployments.
+
+## Maintainability
+
+- TypeScript throughout the application.
+- Reusable components.
+- Modular business services.
+- Documented database migrations.
+- Version-controlled code.
+- Automated testing.
+- Controlled deployment procedures.
+
+---
+
+# 21. TESTING AND QUALITY ASSURANCE
+
+The application must undergo the following testing categories:
+
+### Functional Testing
+
+Verify every module against its requirements.
+
+### Financial Testing
+
+Verify:
+
+- Sales totals.
+- Discounts.
+- Taxes.
+- Payment allocations.
+- Refunds.
+- Cash reconciliation.
+- Cost of goods sold.
+- Gross profit.
+- Net operating profit.
+
+### Inventory Testing
+
+Verify:
+
+- Purchases.
+- Sales deductions.
+- Returns.
+- Stock transfers.
+- Adjustments.
+- Stock valuation.
+
+### Offline Testing
+
+Verify:
+
+- Disconnected sales.
+- Application restart.
+- Device restart.
+- Reconnection.
+- Duplicate prevention.
+- Synchronisation failures.
+- Multiple-terminal stock conflicts.
+
+### Security Testing
+
+Verify:
+
+- Business data isolation.
+- Role permissions.
+- Unauthorised access prevention.
+- API security.
+- Session management.
+- Audit logging.
+
+### Hardware Testing
+
+Verify actual printers, scanners, cash drawers and supported terminals.
+
+### User Acceptance Testing
+
+Conduct real-world testing with pilot businesses before commercial deployment.
+
+---
+
+# 22. IMPLEMENTATION ROADMAP
+
+| Phase | Deliverable | Priority |
+|---|---|---|
+| 1 | Architecture and project foundation | Critical |
+| 2 | Authentication and business onboarding | Critical |
+| 3 | POS and transaction engine | Critical |
+| 4 | Products and inventory | Critical |
+| 5 | Purchasing and suppliers | High |
+| 6 | Financial management | High |
+| 7 | Employees and permissions | High |
+| 8 | Offline-first architecture | Critical |
+| 9 | Reporting and dashboards | High |
+| 10 | General retail and provision store profile | High |
+| 11 | Cosmetics and bar modules | High |
+| 12 | Restaurant module | High |
+| 13 | Pharmacy module | Specialist |
+| 14 | Licensing and deployment administration | Critical |
+| 15 | Testing and commercial release | Critical |
+
+The implementation must be iterative. Modules should be tested before subsequent modules depend on them.
+
+---
+
+# 23. MVP ACCEPTANCE CRITERIA
+
+The first commercial-ready release must demonstrate the following:
+
+1. A business can register and configure its workspace.
+2. The business owner can create users and assign permissions.
+3. Products can be registered, edited and searched.
+4. A cashier can process sales.
+5. Payments can be recorded and reconciled.
+6. Receipts can be generated.
+7. Inventory deductions occur correctly.
+8. Stock can be received and adjusted.
+9. Suppliers can be managed.
+10. Expenses can be recorded.
+11. Cashier sessions can be reconciled.
+12. Sales and inventory reports are accurate.
+13. Offline transactions can be safely synchronised.
+14. Different businesses cannot access each other's records.
+15. The platform supports multiple branches and terminals.
+16. The application can be installed as a PWA.
+17. Supported receipt printers and barcode scanners work.
+18. Managed cloud and dedicated deployments can use the same codebase.
+19. Licence status and deployment information can be managed.
+20. Backups and restoration procedures have been successfully tested.
+
+A release must not be declared production-ready merely because its screens render correctly.
+
+The financial, inventory, offline, security and recovery workflows must all pass their respective tests.
+
+---
+
+# 24. PROJECT DELIVERABLES
+
+The project will produce:
+
+1. Complete web application.
+2. Installable PWA.
+3. Platform administration portal.
+4. Business management portal.
+5. POS terminal interface.
+6. Shared multi-tenant database.
+7. Offline transaction engine.
+8. Industry-specific modules.
+9. Licensing management.
+10. Deployment management.
+11. Technical documentation.
+12. Database documentation.
+13. Installation and configuration guide.
+14. User manual.
+15. Administrator manual.
+16. Testing and acceptance documentation.
+
+---
+
+# 25. FUTURE DEVELOPMENT
+
+The following features are outside the initial MVP scope but must be considered in architectural planning:
+
+- Advanced AI business assistant.
+- Automated purchase recommendations.
+- Customer loyalty programme.
+- Advanced accounting.
+- Payroll.
+- Online customer ordering.
+- Customer self-service portal.
+- Advanced multi-branch analytics.
+- Supplier ordering portal.
+- E-commerce integration.
+- Advanced payment gateway integrations.
+- Automated tax and electronic invoicing integrations.
+
+---
+
+# 26. FINAL PRODUCT DEFINITION
+
+The proposed product is a modular, offline-first, multi-industry Point of Sale and Business Management Platform designed for small and medium-sized businesses.
+
+It will initially serve the Ghanaian market, with Liberia and other African markets as subsequent expansion opportunities.
+
+The platform will support managed cloud deployments and dedicated installations through a shared codebase and centrally controlled development and release process.
+
+The commercial model will be based on one-time software licensing and installation fees, with optional paid hosting, maintenance, support and customisation services.
+
+**The core objective is to give small businesses the tools to process sales, control inventory, manage employees, monitor finances and make better business decisions through one simple application.**
+
+**END OF PRODUCT REQUIREMENTS DOCUMENT — VERSION 1.0**
